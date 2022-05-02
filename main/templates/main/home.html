@@ -1,0 +1,34 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Home
+{% endblock %}
+
+{% block body %}
+
+<br>
+<br>
+<div class="mb-3 container b-flex p-2">
+    <a class="btn btn-lg btn-info bg-gradient" href="add" role="button">Add Document</a>
+    <a class="btn btn-lg btn-danger bg-gradient" href="logout" role="button">Logout</a>
+    </div>
+    
+    <table class="table mb-3 container b-flex p-2">
+        <thead>
+          <tr>
+            <th scope="col">Sl.No</th>
+            <th scope="col">Document Name</th>
+            <th scope="col">Operations</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for D in user.doclist.all %}
+          <tr>
+            <td>{{ forloop.counter }}</td>
+            <td>{{D.docName}}</td>
+            <td><a class="btn btn-sm btn-primary bg-gradient" href="{% url 'viewdoc' D.id %}" role="button">View</a> <a class="btn btn-sm btn-success bg-gradient" href="{% url 'download' D.id %}" role="button">Download</a></td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+{% endblock %}

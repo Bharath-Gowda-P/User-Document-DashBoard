@@ -1,0 +1,27 @@
+{% extends 'main.html' %}
+
+{% block title %}
+Add a Document
+{% endblock %}
+
+{% block body %}
+
+        <div class="container my-5">
+        <form action="add" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="mb-3 container b-flex p-2">
+                <label  class="form-label">Document Name</label>
+            <input type="text" class="form-control "name="dname">
+            </div>
+            <div class="mb-3 container b-flex p-2">
+                <label for="formFile" class="form-label">Document</label>
+            <input type="file" class = "form-control" id="file" name="file">
+        </div>
+        <div class="mb-3 container b-flex p-2">
+            <button type="submit" value="POST" class="btn btn-lg btn-success bg-gradient">Submit</button>
+            <a class="btn btn-lg btn-danger bg-gradient" href="home" role="button">Cancel</a>
+        </div>
+        </form>
+        </div>
+        
+{% endblock %}
